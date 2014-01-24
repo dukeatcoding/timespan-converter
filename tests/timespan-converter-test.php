@@ -37,8 +37,8 @@ class TimespanConverterTest extends PHPUnit_Framework_TestCase
         $this->assertEquals("2014-01-25",$times['days'][6]);
 
         // ######## 1 Week ####################
-        $start = 1390239359; //time()-24*60*60;
-        $end =  1390671638; //time()+4*24*60*60;
+        $start = 1390239359; //time()-24*60*60; 20.01.2014 18:35:59
+        $end =  1390742979; //time()+4*24*60*60; 26.01.2014 14:29:39
         echo "1 Week Start $start End $end \n";
         $times = timestampToBlocks($start,$end);
         $this->assertEquals(0,count($times['days']));
@@ -50,20 +50,20 @@ class TimespanConverterTest extends PHPUnit_Framework_TestCase
         */
 
         // ######## 1 Week 2 Days ###############
-        $start = 1390239359; //time()-24*60*60;
-        $end =  1390671638+2*24*60*60+2; //time()+4*24*60*60;
+        $start = 1390239359; // 2014-01-20 17:35:59
+        $end =  1390919694; // 28.01.2014 15:34:54
         echo "1 Week 2 Days Start $start End $end \n";
         $times = timestampToBlocks($start,$end);
         $this->assertEquals(2,count($times['days']));
-        $this->assertEquals("2014-01-26",$times['days'][0]);
-        $this->assertEquals("2014-01-27",$times['days'][1]);
+        $this->assertEquals("2014-01-27",$times['days'][0]);
+        $this->assertEquals("2014-01-28",$times['days'][1]);
         $this->assertEquals(1,count($times['weeks']));
         $this->assertEquals("04",$times['weeks'][0]);
 
         // ######## 2 Weeks ###############
-        $start = 1390239359; //time()-24*60*60;
-        $end =  1390671638+7*24*60*60; //time()+4*24*60*60;
-        echo "1 Week 2 Days Start $start End $end \n";
+        $start = 1390239359; //20.01.2014 18:35:59
+        $end =  1391351694; //02.02.2014 15:34:54
+        echo "2 Weeks  Start $start End $end \n";
         $times = timestampToBlocks($start,$end);
         $this->assertEquals(0,count($times['days']));
         $this->assertEquals(2,count($times['weeks']));
@@ -71,8 +71,8 @@ class TimespanConverterTest extends PHPUnit_Framework_TestCase
         $this->assertEquals("05",$times['weeks'][1]);
 
         // ######## 2 Weeks + 2 Days ###############
-        $start = 1390239359; //time()-24*60*60;
-        $end =  1390671638+9*24*60*60; //time()+4*24*60*60;
+        $start = 1390239359; //2014-01-20 17:35:59
+        $end =  1390671638+10*24*60*60; //time()+4*24*60*60;
         echo "2 Week 2 Days Start $start End $end \n";
         $times = timestampToBlocks($start,$end);
         $this->assertEquals(2,count($times['days']));
