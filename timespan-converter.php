@@ -11,7 +11,7 @@ class TimespanConverter {
      * @param timestamp $end
      * @return array
      */
-    public function timestampToBlocks($start,$end){
+    public function timestampsToBlocks($start,$end){
 
         $begin =   DateTime::createFromFormat('U', $start);
         $end =   DateTime::createFromFormat('U', $end);
@@ -19,7 +19,7 @@ class TimespanConverter {
        return $this->datetimeToBlocks($start,$end);
     }
 	
-	public function datetimeToBlocks($start,$end){
+	public function datetimesToBlocks($start,$end){
 		$return = $this->toDay($begin,$end);
         echo "Final";
         print_r($return);
